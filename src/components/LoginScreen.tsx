@@ -130,12 +130,18 @@ export function LoginScreen({ onNavigate, onLogin }: LoginScreenProps) {
               {/* Send OTP Button */}
               <Button 
                 onClick={handleSendOTP}
-                disabled={!contact}
+                disabled={!contact || loading}
                 className="w-full py-3 bg-blue-600 hover:bg-blue-700"
               >
-                Send OTP
+                {loading ? 'Sending...' : 'Send OTP'}
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
+
+              {error && (
+                <p className="text-red-500 text-sm mt-4 text-center">
+                  {error}
+                </p>
+              )}
 
               {/* Continue as Guest */}
               <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
@@ -189,13 +195,20 @@ export function LoginScreen({ onNavigate, onLogin }: LoginScreenProps) {
                 </p>
               </div>
 
+              {/* Verify OTP Button */}
               <Button 
                 onClick={handleVerifyOTP}
-                disabled={otp.length !== 4}
+                disabled={otp.length !== 4 || loading}
                 className="w-full py-3 bg-blue-600 hover:bg-blue-700"
               >
-                Verify & Continue
+                {loading ? 'Verifying...' : 'Verify & Continue'}
               </Button>
+
+              {error && (
+                <p className="text-red-500 text-sm mt-4 text-center">
+                  {error}
+                </p>
+              )}
 
               <Button
                 variant="ghost"

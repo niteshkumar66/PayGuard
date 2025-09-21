@@ -52,4 +52,3 @@ export function CaseDetail({ caseData, onNavigate }: CaseDetailProps) {
     </div>
   );
 }
-
