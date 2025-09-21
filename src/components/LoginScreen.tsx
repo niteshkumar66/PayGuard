@@ -18,6 +18,8 @@ export function LoginScreen({ onNavigate, onLogin }: LoginScreenProps) {
   const [loginMethod, setLoginMethod] = useState<'phone' | 'email'>('phone');
   const [contact, setContact] = useState('');
   const [otp, setOTP] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSendOTP = () => {
     if (contact) {
